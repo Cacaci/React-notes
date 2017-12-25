@@ -12,8 +12,8 @@ const Editor = ({
   return (
     <div id="note-editor">
       <textarea className="form-control"
-        // value={activeNote.text}
-        onInput={handleInput}></textarea>
+        value={activeNote.text}
+        onChange={handleInput}></textarea>
     </div>
   )
 }

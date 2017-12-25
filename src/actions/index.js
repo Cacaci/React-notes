@@ -24,10 +24,10 @@ export const editNote = (text) => {
 
 export const deleteNote = () => ({ type: DELETE_NOTE })
 
-export const setActiveNote = (activeNote) => {
+export const setActiveNote = (note) => {
   return {
     type: SET_ACTIVE_NOTE,
-    activeNote
+    note
   }
 }
 
