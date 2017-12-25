@@ -14,9 +14,15 @@ const initState = {
 let id = 0
 
 const notes = (state = initState, action) => {
-  const handleDelete = (arr, id) => { // 可以直接传一个数组的索引
-    let index = arr.findIndex(ele => ele.id = id)
-    return arr.splice(index, 1)
+  const handleDelete = (notes, id) => { // 可以直接传一个数组的索引
+    let index = notes.findIndex(note => note.id === id)
+    notes.splice(index, 1)
+    return Object.assign({}, {
+      notes: [
+        ...notes
+      ],
+      activeNote: notes[0] || []
+    })
   }
 
   switch (action.type) {
