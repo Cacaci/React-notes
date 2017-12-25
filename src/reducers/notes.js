@@ -15,13 +15,10 @@ const notes = (state = [{id: 0, text: 'New note', favorite: false}], action) => 
 
   switch (action.type) {
     case ADD_NOTE: 
-      // return [
-      //   ...state,
-      //   Object.assign({}, action.note, {id: ++id})
-      // ]
-      let newNote = {id: ++id, text: 'New note', favorite: false}
-      console.log(++id)
-      return state.push(newNote)
+      return [
+        ...state,
+        Object.assign({}, {id: ++id}, {text: 'New note', favorite: false})
+      ]
     case DELETE_NOTE:
       return handleDelete(state, action.id)
     default:

@@ -11,13 +11,14 @@ const App = ({
   dispatch,
   notes,
   activeNote,
-  handleAdd
+  handleAdd,
+  handleDelete
 }) => (
   <div id="note">
     <Toolbar
       activeNote={activeNote}
       handleAdd={handleAdd}
-      deleteNote={deleteNote}
+      handleDelete={handleDelete}
       toggleFavorite={toggleFavorite} />
     <NoteList notes={notes} activeNote={activeNote} />
     <Editor editNote={editNote} />
@@ -30,8 +31,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  handleAdd: () => addNote(),
-  deleteNote: id => deleteNote(id),
+  // handleAdd: () => addNote(),
+  handleAdd: () => dispatch(addNote()),
+  // handleDelete: id => deleteNote(id),
+  handleDelete: id => dispatch(deleteNote(id)),
   editNote: text => editNote(text),
   toggleFavorite
 })

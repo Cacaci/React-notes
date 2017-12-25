@@ -6,8 +6,10 @@ import { Provider } from 'react-redux'
 import reducers from './reducers'
 import App from './containers/App'
 import registerServiceWorker from './registerServiceWorker'
+import { deleteNote, addNote } from './actions'
 
 const store = createStore(reducers)
+
 console.log(store.getState())
 
 ReactDOM.render(

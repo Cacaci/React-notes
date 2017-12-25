@@ -69,7 +69,7 @@ export default class NoteList extends Component {
           <div className="list-group">
             {notes.map((note, index) => {
               return (
-                <a key={note.id} className={activeNote.id === note.id ? 'active' : ''} className="list-group-item" href="Javascript:void(0);">
+                <a key={index} className={activeNote.id === note.id ? 'active' : ''} className="list-group-item" href="Javascript:void(0);">
                   <h4 className="list-group-item-heading">{note.text}</h4>
                 </a>
               )

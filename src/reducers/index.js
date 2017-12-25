@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import notes from './notes'
 import activeNote from './activeNote'
 
-const reducers = combineReducers ({
+const reducers = combineReducers({
   notes,
   activeNote
 })
