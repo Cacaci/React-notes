@@ -44,29 +44,13 @@ import React, { Component, PropTypes } from 'react'
 export default class NoteList extends Component {
   constructor (props) {
     super(props)
-    this.state = {filterNotes: this.props.notes || []}
-    this.handleTest = this.handleTest.bind(this)
+    this.updateActive = this.updateActive.bind(this)
   }
-  handleTest (e, note) {
+  updateActive (e, note) {
     const { handleActiveNote, handleEdit } = this.props
     e.preventDefault()
     handleActiveNote(note)
     handleEdit(note.text)
-  }
-  goFilter (type) {
-    this.props.handleFilter(type)
-    let show = this.props.show
-    let notes = this.props.notes
-    let newNotes
-    const filterNotes = () => {
-      if (show === 'all') {
-        return notes
-      } else {
-        return newNotes = notes.filter(item => item.favorite === true)
-      }
-    }
-    this.setState({filterNotes: filterNotes()})
-    console.log(filterNotes())
   }
   componentDidMount () {}
 
@@ -79,7 +63,7 @@ export default class NoteList extends Component {
           <h2>Notes | coligo</h2>
           <div className="btn-group btn-group-justified" role="group">
             <div className="btn-group" role="group">
-              <button onClick={() => this.goFilter('all')} type="button" className="btn btn-default">All Notes</button>
+              <button onClick={() => handleFilter('all')} type="button" className="btn btn-default">All Notes</button>
             </div>
             <div className="btn-group" role="group">
               <button onClick={() => handleFilter('favorite')} type="button" className="btn btn-default">Favorites</button>
@@ -90,7 +74,7 @@ export default class NoteList extends Component {
           <div className="list-group">
             {filterNotes.map((note, index) => {
               return (
-                <a onClick={e => this.handleTest(e, note)} key={index} className={activeNote.id === note.id ? 'list-group-item active' : 'list-group-item'} href="Javascript:void(0);">
+                <a onClick={e => this.updateActive(e, note)} key={index} className={activeNote.id === note.id ? 'list-group-item active' : 'list-group-item'} href="Javascript:void(0);">
                   <span className="list-group-item-heading">{note.text.substring(0, 30)}</span>
                 </a>
               )

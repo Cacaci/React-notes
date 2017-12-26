@@ -16,14 +16,15 @@ const initState = {
 let id = 0
 
 const notes = (state = initState, action) => {
-  const handleDelete = (notes, id) => {
+  const handleDelete = (state, id) => {
     let newNotes
+    let notes = state.notes
     for (let i = 0; i < notes.length; i++) {
       if (notes[i].id === id) {
         newNotes = [...notes.slice(0, i), ...notes.slice(i + 1)]
       }
     }
-    return Object.assign({}, notes, {
+    return Object.assign({}, state, {
       notes: newNotes,
       activeNote: newNotes[0] ? newNotes[0] : []
     })
@@ -68,7 +69,7 @@ const notes = (state = initState, action) => {
         activeNote: newNote
       })
     case DELETE_NOTE:
-      return handleDelete(state.notes, state.activeNote.id)
+      return handleDelete(state, state.activeNote.id)
     case EDIT_NOTE:
       return handleEdit(state, action.text)
     case SET_ACTIVE_NOTE:

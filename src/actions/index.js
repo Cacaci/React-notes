@@ -1,4 +1,3 @@
-
 import {
   ADD_NOTE,
   EDIT_NOTE,
@@ -8,7 +7,6 @@ import {
   TOGGLE_FILTER
 } from '../constants'
 
-// note = { id: 1, text: 'Add a new note!', favorite: false }
 export const addNote = () => ({ type: ADD_NOTE })
 
 export const editNote = (text) => {
@@ -29,9 +27,16 @@ export const setActiveNote = (note) => {
 
 export const toggleFavorite = () => ({ type: TOGGLE_FAVORITE })
 
-export const toggleFilter = style => {
-  return {
-    type: TOGGLE_FILTER,
-    style
-  }
-}
+/* 写法一： */
+// export const toggleFilter = style => {
+//   return {
+//     type: TOGGLE_FILTER,
+//     style
+//   }
+// }
+
+/* 写法二：用括号括起来可以省略return */
+export const toggleFilter = style => ({
+  type: TOGGLE_FILTER,
+  style
+})
