@@ -1,36 +1,42 @@
+/* 函数式写法 */
 // import React from 'react'
 
 // const NoteList = ({
+//   show,
 //   notes,
-//   activeNote
+//   activeNote,
+//   handleFilter,
+//   handleEdit,
+//   handleActiveNote
 // }) => {
+//   const updateActive = (e, note, handleActiveNote, handleEdit) => {
+//     e.preventDefault()
+//     handleActiveNote(note)
+//     handleEdit(note.text)
+//   }
+//   const filterNotes = show === 'all' ? notes : notes.filter(note => note.favorite === true)
 //   return (
 //     <div id="notes-list">
 //       <div id="list-header">
 //         <h2>Notes | coligo</h2>
 //         <div className="btn-group btn-group-justified" role="group">
-//           {/* All notes button */}
 //           <div className="btn-group" role="group">
-//             <button type="button" className="btn btn-default">All Notes</button>
+//             <button onClick={() => handleFilter('all')} type="button" className="btn btn-default">All Notes</button>
 //           </div>
-//           {/* Favorites button */}
 //           <div className="btn-group" role="group">
-//             <button type="button" className="btn btn-default">Favorites</button>
+//             <button onClick={() => handleFilter('favorite')} type="button" className="btn btn-default">Favorites</button>
 //           </div>
 //         </div>
 //       </div>
-//       {/* Render note list */}
 //       <div className="container">
 //         <div className="list-group">
-//           {
-//             notes.map((note, index) => {
-//               return (
-//                 <a key={note.id} className="list-group-item" className={activeNote.id === note.id ? 'active' : ''} href="Javascript:void(0);">
-//                   <h4 className="list-group-item-heading">{note.text}</h4>
-//                 </a>
-//               )
-//             })
-//           }
+//           {filterNotes.map((note, index) => {
+//             return (
+//               <a onClick={e => this.updateActive(e, note, handleActiveNote, handleEdit)} key={index} className={activeNote.id === note.id ? 'list-group-item active' : 'list-group-item'} href="Javascript:void(0);">
+//                 <span className="list-group-item-heading">{note.text.substring(0, 30)}</span>
+//               </a>
+//             )
+//           })}
 //         </div>
 //       </div>
 //     </div>
@@ -39,6 +45,7 @@
 
 // export default NoteList
 
+/* ES6写法 */
 import React, { Component, PropTypes } from 'react'
 
 export default class NoteList extends Component {
@@ -52,7 +59,6 @@ export default class NoteList extends Component {
     handleActiveNote(note)
     handleEdit(note.text)
   }
-  componentDidMount () {}
 
   render () {
     const { notes, show, activeNote, handleFilter } = this.props
