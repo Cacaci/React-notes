@@ -28,18 +28,23 @@ import React, { Component } from 'react'
 export default class Toolbar extends Component {
   constructor (props) {
     super(props)
+    this.goDelete = this.goDelete.bind(this)
+  }
+  goDelete () {
+    const { handleDelete, notes } = this.props
+    if (notes.length === 0) return
+    handleDelete()
   }
   componentDidMount () {
-    console.log(this.props.activeNote)
   }
 
   render () {
-    const { handleAdd, activeNote, handleDelete, toggleFavorite } = this.props
+    const { handleAdd, activeNote, handleFavorite } = this.props
     return (
       <div id="toolbar">
         <i onClick={() => handleAdd()} className="glyphicon glyphicon-plus"></i>
-        <i className={activeNote.favorite ? 'starred' : ''} className="glyphicon glyphicon-star"></i>
-        <i onClick={(id) => handleDelete(id)} className="glyphicon glyphicon-remove"></i>
+        <i onClick={() => handleFavorite()} className={activeNote.favorite ? 'glyphicon glyphicon-star starred' : 'glyphicon glyphicon-star'}></i>
+        <i onClick={this.goDelete} className="glyphicon glyphicon-remove"></i>
       </div>
     )
   }

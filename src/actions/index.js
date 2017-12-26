@@ -4,13 +4,9 @@ import {
   EDIT_NOTE,
   DELETE_NOTE,
   SET_ACTIVE_NOTE,
-  TOGGLE_FAVORITE
+  TOGGLE_FAVORITE,
+  TOGGLE_FILTER
 } from '../constants'
-
-// const state = {
-//   notes: [], // 所有笔记
-//   activeNote: {} // 当前笔记
-// }
 
 // note = { id: 1, text: 'Add a new note!', favorite: false }
 export const addNote = () => ({ type: ADD_NOTE })
@@ -31,4 +27,11 @@ export const setActiveNote = (note) => {
   }
 }
 
-export const toggleFavorite = () => { type: TOGGLE_FAVORITE }
+export const toggleFavorite = () => ({ type: TOGGLE_FAVORITE })
+
+export const toggleFilter = style => {
+  return {
+    type: TOGGLE_FILTER,
+    style
+  }
+}
